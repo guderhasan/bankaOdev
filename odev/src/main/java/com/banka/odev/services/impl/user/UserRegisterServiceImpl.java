@@ -1,4 +1,4 @@
-package com.banka.odev.services.impl;
+package com.banka.odev.services.impl.user;
 
 import java.time.LocalDateTime;
 import java.util.Base64;
@@ -6,17 +6,17 @@ import java.util.Base64;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import com.banka.odev.dto.UserRegisterRequestDto;
-import com.banka.odev.dto.UserRegisterResponseDto;
+import com.banka.odev.dto.user.UserRegisterRequestDto;
+import com.banka.odev.dto.user.UserRegisterResponseDto;
 import com.banka.odev.entities.User;
 import com.banka.odev.repository.UserRepository;
-import com.banka.odev.services.IRegisterService;
+import com.banka.odev.services.user.IUserRegisterService;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class RegisterServiceImpl implements IRegisterService{
+public class UserRegisterServiceImpl implements IUserRegisterService{
 	
 	
     private final UserRepository repository;

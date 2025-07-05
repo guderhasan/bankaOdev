@@ -5,9 +5,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.banka.odev.dto.UserRegisterRequestDto;
-import com.banka.odev.dto.UserRegisterResponseDto;
-import com.banka.odev.services.IRegisterService;
+
+import com.banka.odev.dto.user.UserRegisterRequestDto;
+import com.banka.odev.dto.user.UserRegisterResponseDto;
+import com.banka.odev.services.user.IUserRegisterService;
 
 
 @RestController
@@ -16,7 +17,7 @@ public class UserController {
 
 	
 	@Autowired
-	private IRegisterService registerService;
+	private IUserRegisterService registerService;
 
 	@PostMapping(path = "/register")
 	public ResponseEntity<UserRegisterResponseDto> register(UserRegisterRequestDto userRegister) {

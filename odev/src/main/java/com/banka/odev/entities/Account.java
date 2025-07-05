@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,9 +26,11 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.UUID)
 	private UUID  id;
 	
-	@Column(name = "number") 
+	@NotNull
+	@Column(name = "number",unique = true)
 	private String number;
 	
+	@NotNull
 	@Column(name = "name")
 	private String name ;
 	

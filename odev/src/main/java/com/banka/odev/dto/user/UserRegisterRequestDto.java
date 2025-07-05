@@ -1,4 +1,4 @@
-package com.banka.odev.dto;
+package com.banka.odev.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
