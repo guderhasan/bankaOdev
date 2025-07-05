@@ -1,5 +1,6 @@
 package com.banka.odev.repository;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +11,7 @@ import com.banka.odev.entities.Account;
 @Repository
 public interface AccountRepository extends JpaRepository<Account, UUID>{
 
-	Account findByNumber(String number);
+	List<Account> findByNumber(String number);
+
  
 }

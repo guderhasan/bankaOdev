@@ -33,8 +33,8 @@ public class AccountCreateServiceImpl implements IAccountCreateService{
 		account.setUpdatedAt(LocalDateTime.now());
 
 		repository.save(account);
-		
-		Account accountResult =  repository.findByNumber(accountRegister.getNumber());
+
+		Account accountResult = accountRegister != null ? repository.findByNumber(accountRegister.getNumber()).get(0) : null;
 	
 		return modelMapper.map(accountResult, AccountCreateResponseDto.class);
 	}

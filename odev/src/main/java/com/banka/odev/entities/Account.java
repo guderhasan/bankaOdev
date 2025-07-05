@@ -35,7 +35,7 @@ public class Account {
 	private String name ;
 	
 	@Column(name = "balance")
-	private BigDecimal balance;
+	private BigDecimal balance; 
 	
 	@Column(name = "createdAt")
 	private LocalDateTime createdAt;
