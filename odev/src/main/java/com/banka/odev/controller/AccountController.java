@@ -4,17 +4,23 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.banka.odev.dto.account.AccountCreateRequestDto;
 import com.banka.odev.dto.account.AccountCreateResponseDto;
 import com.banka.odev.dto.account.AccountRequestDto;
 import com.banka.odev.dto.account.AccountResponseDto;
+import com.banka.odev.entities.Account;
 import com.banka.odev.services.account.IAccountCreateService;
+import com.banka.odev.services.account.IAccountDeleteService;
 import com.banka.odev.services.account.IAccountSearchService;
+import com.banka.odev.services.account.IAccountUpdateService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,6 +31,8 @@ public class AccountController {
 
 	private final IAccountCreateService createService;
 	private final IAccountSearchService searchService;
+	private final IAccountUpdateService updateService;
+	private final IAccountDeleteService deleteService;
 
 	@PostMapping(path = "/create")
 	public ResponseEntity<AccountCreateResponseDto> create(AccountCreateRequestDto accountCreate,UUID id) {
@@ -54,6 +62,18 @@ public class AccountController {
 	public ResponseEntity<AccountResponseDto> findById(UUID id) {
 		
 		return ResponseEntity.ok(searchService.findById(id));
+	}
+	
+	@PutMapping(path = "/update")
+	public ResponseEntity<AccountCreateResponseDto> update(@RequestParam UUID id, Account account) {
+		
+		return ResponseEntity.ok(updateService.update(id,account));
+	}
+	
+	@DeleteMapping(path = "/delete")
+	public ResponseEntity<AccountCreateResponseDto> delete(@RequestParam UUID id) {
+		
+		return ResponseEntity.ok(deleteService.delete(id));
 	}
 	
 }
