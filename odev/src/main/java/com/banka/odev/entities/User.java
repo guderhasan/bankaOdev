@@ -45,6 +45,7 @@ public class User {
 	@Column(name = "updatedAt")
 	private LocalDateTime updatedAt;
 	
-	@OneToMany
+	
+	@OneToMany(mappedBy = "user")
 	private List<Account> account;
 }
