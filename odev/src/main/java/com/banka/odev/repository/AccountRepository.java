@@ -17,5 +17,4 @@ public interface AccountRepository extends JpaRepository<Account, UUID>{
 	List<Account> findByNumber(String number);
 	List<Account> findByUserId(UUID userId);
 	
-
 }

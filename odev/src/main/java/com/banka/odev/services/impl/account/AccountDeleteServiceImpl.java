@@ -13,7 +13,6 @@ import com.banka.odev.services.account.IAccountDeleteService;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@Repository
 @Service
 public class AccountDeleteServiceImpl implements IAccountDeleteService{
 	
