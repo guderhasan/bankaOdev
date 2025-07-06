@@ -24,8 +24,6 @@ public class TransactionTransferServiceImpl implements ITransactionTransferServi
 	private final AccountRepository accountRepository;
 	private final  ModelMapper modelMapper;
 	
-	// !!! Autowired vs. ile bu nesne yaratılabilirdi fakat model sınıfı olduğundan yaratılmıyor. Model classında @Component kullanmak ta sakıncalı olabileceğinden bu şekilde nesne türetildi.
-	Transaction transaction =new Transaction();
 
 	// Aynı anda gerçekleşen işlemlerde hata olursa işlemlerin geri alınması
 	@Transactional
@@ -50,19 +48,21 @@ public class TransactionTransferServiceImpl implements ITransactionTransferServi
 				receiverAccount.setUpdatedAt(LocalDateTime.now());
 				accountRepository.save(receiverAccount);
 				
-				saveTransaction(transfer.getBalance(),StatusEnum.SUCCESS,receiverAccount,senderAccount);
+			    Transaction result= saveTransaction(transfer.getBalance(),StatusEnum.SUCCESS,receiverAccount,senderAccount);
 				
-				return modelMapper.map(transaction, TransactionTransferResponseDto.class);
+				return modelMapper.map(result, TransactionTransferResponseDto.class);
 				
 			}else {
-				saveTransaction(transfer.getBalance(),StatusEnum.FAILED,receiverAccount,senderAccount);
-				return modelMapper.map(transaction, TransactionTransferResponseDto.class);
+				Transaction result= saveTransaction(transfer.getBalance(),StatusEnum.FAILED,receiverAccount,senderAccount);
+				return modelMapper.map(result, TransactionTransferResponseDto.class);
 			}
 			
 		} 
 
 	
-	public void saveTransaction(BigDecimal balance, StatusEnum status,Account receiver, Account sender) {
+	public Transaction saveTransaction(BigDecimal balance, StatusEnum status,Account receiver, Account sender) {
+		// !!! Autowired vs. ile bu nesne yaratılabilirdi fakat model sınıfı olduğundan yaratılmıyor. Model classında @Component kullanmak ta sakıncalı olabileceğinden bu şekilde nesne türetildi.
+		Transaction transaction =new Transaction();
 		
 		transaction.setAmount(balance);
 		transaction.setFrom(sender);
@@ -71,6 +71,7 @@ public class TransactionTransferServiceImpl implements ITransactionTransferServi
 		transaction.setTransactionDate(LocalDateTime.now());
 		
 		repository.save(transaction);
+		return transaction;
 	}
 	
 }
