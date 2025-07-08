@@ -11,4 +11,5 @@ import com.banka.odev.entities.User;
 public interface UserRepository extends JpaRepository<User, UUID>{
   User findByEmail(String email);
   Optional<User> findById(UUID id);
+  Optional<User> findUserByUsername(String username);
 }

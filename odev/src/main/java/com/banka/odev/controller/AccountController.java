@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,8 +24,10 @@ import com.banka.odev.services.account.IAccountDeleteService;
 import com.banka.odev.services.account.IAccountDetailService;
 import com.banka.odev.services.account.IAccountSearchService;
 import com.banka.odev.services.account.IAccountUpdateService;
-
 import lombok.RequiredArgsConstructor;
+
+//Localde React testleri için yazıldı
+@CrossOrigin(origins = "http://localhost:3000")
 
 @RequiredArgsConstructor
 @RestController

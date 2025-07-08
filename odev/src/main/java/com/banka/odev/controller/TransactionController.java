@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,9 @@ import com.banka.odev.dto.transaction.TransactionTransferResponseDto;
 import com.banka.odev.services.transaction.ITransactionDetailService;
 import com.banka.odev.services.transaction.ITransactionTransferService;
 import lombok.RequiredArgsConstructor;
+
+//Localde React testleri için yazıldı
+@CrossOrigin(origins = "http://localhost:3000")
 
 @RequiredArgsConstructor
 @RestController
