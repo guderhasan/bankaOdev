@@ -6,6 +6,8 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import com.banka.odev.dto.user.UserRequestDto;
 import com.banka.odev.dto.user.UserResponseDto;
 import com.banka.odev.entities.User;
 import com.banka.odev.repository.UserRepository;
@@ -36,5 +38,13 @@ public class IUserSearchServiceImpl implements IUserSearchService{
 		Optional<User> account =  repository.findById(id);
 		return modelMapper.map(account, UserResponseDto.class);
 	}
+
+	@Override
+	public UserResponseDto findByUsername(UserRequestDto user) {
+		// TODO Auto-generated method stub
+		Optional<User> userResult =  repository.findUserByUsername(user.getUsername());
+		return modelMapper.map(userResult, UserResponseDto.class);
+	}
+
 
 }
